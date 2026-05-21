@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Next Level Store — Tecnología al siguiente nivel</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Arial, sans-serif; background: #0A0A0A; color: #fff; }
+.nav { background: #0A0A0A; border-bottom: 1px solid #222; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 10; }
+.nav-logo { font-size: 18px; font-weight: bold; color: #0066FF; letter-spacing: 1px; }
+.nav-links { display: flex; gap: 2rem; }
+.nav-links a { color: #aaa; font-size: 14px; text-decoration: none; }
+.nav-links a:hover { color: #fff; }
+.nav-btn { background: #0066FF; color: #fff; border: none; padding: 8px 20px; border-radius: 6px; font-size: 14px; cursor: pointer; }
+.hero { background: #0A0A0A; padding: 5rem 2rem; text-align: center; border-bottom: 1px solid #1a1a1a; }
+.hero-badge { display: inline-block; background: rgba(0,102,255,0.1); color: #0066FF; border: 1px solid rgba(0,102,255,0.3); padding: 4px 14px; border-radius: 20px; font-size: 12px; margin-bottom: 1.5rem; }
+.hero h1 { font-size: 42px; font-weight: bold; line-height: 1.2; margin-bottom: 1rem; }
+.hero h1 span { color: #0066FF; }
+.hero p { color: #aaa; font-size: 16px; max-width: 500px; margin: 0 auto 2rem; line-height: 1.7; }
+.hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.btn-primary { background: #0066FF; color: #fff; border: none; padding: 12px 28px; border-radius: 8px; font-size: 15px; cursor: pointer; }
+.btn-secondary { background: transparent; color: #fff; border: 1px solid #444; padding: 12px 28px; border-radius: 8px; font-size: 15px; cursor: pointer; }
+.trust-bar { background: #111; border-bottom: 1px solid #1a1a1a; padding: 1rem 2rem; display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
+.trust-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #aaa; }
+.trust-item i { color: #0066FF; font-size: 16px; }
+.section { padding: 4rem 2rem; background: #0A0A0A; }
+.section-title { font-size: 24px; font-weight: bold; margin-bottom: 0.5rem; }
+.section-sub { color: #aaa; font-size: 15px; margin-bottom: 2.5rem; }
+.cats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
+.cat-card { background: #111; border: 1px solid #222; border-radius: 12px; padding: 1.5rem 1rem; text-align: center; cursor: pointer; transition: border-color 0.2s; }
+.cat-card:hover { border-color: #0066FF; }
+.cat-card i { font-size: 28px; color: #0066FF; margin-bottom: 0.75rem; display: block; }
+.cat-card p { font-size: 13px; color: #ccc; }
+.products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+.prod-card { background: #111; border: 1px solid #222; border-radius: 12px; overflow: hidden; }
+.prod-img { background: #1a1a1a; height: 140px; display: flex; align-items: center; justify-content: center; }
+.prod-img i { font-size: 48px; color: #333; }
+.prod-info { padding: 1rem; }
+.prod-name { font-size: 14px; color: #fff; margin-bottom: 4px; }
+.prod-price { font-size: 18px; font-weight: bold; color: #0066FF; margin-bottom: 12px; }
+.prod-btn { width: 100%; background: #0066FF; color: #fff; border: none; padding: 8px; border-radius: 6px; font-size: 13px; cursor: pointer; }
+.badge-new { background: rgba(0,102,255,0.1); color: #0066FF; font-size: 11px; padding: 2px 8px; border-radius: 4px; margin-bottom: 8px; display: inline-block; }
+.how-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; }
+.step { background: #111; border: 1px solid #222; border-radius: 12px; padding: 1.5rem; text-align: center; }
+.step-num { width: 36px; height: 36px; background: #0066FF; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: bold; margin: 0 auto 1rem; }
+.step h3 { font-size: 14px; font-weight: bold; margin-bottom: 6px; }
+.step p { font-size: 12px; color: #aaa; line-height: 1.6; }
+.about { background: #111; border-top: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; padding: 4rem 2rem; }
+.about-inner { max-width: 600px; margin: 0 auto; text-align: center; }
+.about-inner h2 { font-size: 24px; font-weight: bold; margin-bottom: 1rem; }
+.about-inner p { color: #aaa; line-height: 1.8; font-size: 15px; margin-bottom: 1rem; }
+.faq { padding: 4rem 2rem; background: #0A0A0A; }
+.faq-item { border-bottom: 1px solid #1a1a1a; padding: 1.25rem 0; }
+.faq-q { font-size: 15px; font-weight: bold; margin-bottom: 0.5rem; color: #fff; }
+.faq-a { font-size: 14px; color: #aaa; line-height: 1.7; }
+.footer { background: #111; border-top: 1px solid #1a1a1a; padding: 2rem; text-align: center; }
+.footer p { color: #555; font-size: 13px; }
+.footer span { color: #0066FF; }
+@media (max-width: 600px) {
+  .nav-links { display: none; }
+  .hero h1 { font-size: 28px; }
+  .trust-bar { gap: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <span class="nav-logo">NEXT LEVEL STORE</span>
+  <div class="nav-links">
+    <a href="#inicio">Inicio</a>
+    <a href="#productos">Productos</a>
+    <a href="#como-comprar">Cómo comprar</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+  <button class="nav-btn">Ver tienda</button>
+</nav>
+
+<section class="hero" id="inicio">
+  <div class="hero-badge">📍 Resistencia, Chaco</div>
+  <h1>Tecnología al<br><span>siguiente nivel</span></h1>
+  <p>Teléfonos, auriculares, cargadores y accesorios. Envíos a todo Argentina con atención personalizada.</p>
+  <div class="hero-btns">
+    <button class="btn-primary">Ver productos</button>
+    <button class="btn-secondary">Contactar por WhatsApp</button>
+  </div>
+</section>
+
+<div class="trust-bar">
+  <div class="trust-item"><i class="ti ti-shield-check"></i> Compra segura</div>
+  <div class="trust-item"><i class="ti ti-truck-delivery"></i> Envíos a todo el país</div>
+  <div class="trust-item"><i class="ti ti-credit-card"></i> Mercado Pago</div>
+  <div class="trust-item"><i class="ti ti-message-circle"></i> Atención por WhatsApp</div>
+</div>
+
+<section class="section" id="productos">
+  <div class="section-title">Categorías</div>
+  <div class="section-sub">Todo lo que necesitás para tu celular</div>
+  <div class="cats-grid">
+    <div class="cat-card"><i class="ti ti-device-mobile"></i><p>Teléfonos</p></div>
+    <div class="cat-card"><i class="ti ti-headphones"></i><p>Auriculares</p></div>
+    <div class="cat-card"><i class="ti ti-plug"></i><p>Cargadores</p></div>
+    <div class="cat-card"><i class="ti ti-cable"></i><p>Cables</p></div>
+    <div class="cat-card"><i class="ti ti-device-ipad"></i><p>Fundas</p></div>
+    <div class="cat-card"><i class="ti ti-tool"></i><p>Accesorios</p></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">Productos destacados</div>
+  <div class="section-sub">Los más vendidos esta semana</div>
+  <div class="products-grid">
+    <div class="prod-card">
+      <div class="prod-img"><i class="ti ti-device-mobile"></i></div>
+      <div class="prod-info">
+        <div class="badge-new">Nuevo</div>
+        <div class="prod-name">Smartphone Android 128GB</div>
+        <div class="prod-price">$XXX.XXX</div>
+        <button class="prod-btn">Agregar al carrito</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img"><i class="ti ti-headphones"></i></div>
+      <div class="prod-info">
+        <div class="badge-new">Oferta</div>
+        <div class="prod-name">Auriculares Bluetooth TWS</div>
+        <div class="prod-price">$XX.XXX</div>
+        <button class="prod-btn">Agregar al carrito</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img"><i class="ti ti-plug"></i></div>
+      <div class="prod-info">
+        <div class="prod-name">Cargador rápido 65W</div>
+        <div class="prod-price">$XX.XXX</div>
+        <button class="prod-btn">Agregar al carrito</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img"><i class="ti ti-cable"></i></div>
+      <div class="prod-info">
+        <div class="prod-name">Cable USB-C trenzado 2m</div>
+        <div class="prod-price">$X.XXX</div>
+        <button class="prod-btn">Agregar al carrito</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="como-comprar">
+  <div class="section-title">¿Cómo comprar?</div>
+  <div class="section-sub">Simple, rápido y seguro</div>
+  <div class="how-steps">
+    <div class="step"><div class="step-num">1</div><h3>Elegí tu producto</h3><p>Explorá el catálogo y seleccioná lo que necesitás</p></div>
+    <div class="step"><div class="step-num">2</div><h3>Agregá al carrito</h3><p>Podés seguir comprando o ir directo a pagar</p></div>
+    <div class="step"><div class="step-num">3</div><h3>Elegí el envío</h3><p>OCA, Andreani o retiro gratis en Resistencia</p></div>
+    <div class="step"><div class="step-num">4</div><h3>Pagá seguro</h3><p>Tarjeta, débito o transferencia vía Mercado Pago</p></div>
+    <div class="step"><div class="step-num">5</div><h3>¡Listo!</h3><p>Te avisamos cuando tu pedido esté en camino</p></div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="about-inner">
+    <h2>¿Quiénes somos?</h2>
+    <p>Somos un emprendimiento de Resistencia, Chaco, especializado en tecnología y accesorios para celulares. Nacimos con un objetivo claro: acercar productos de calidad a precios accesibles, con la atención personalizada que las grandes tiendas no te dan.</p>
+    <p>Trabajamos con teléfonos, auriculares, cargadores, cables y todo lo que necesitás para sacarle el máximo provecho a tu dispositivo.</p>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="section-title">Preguntas frecuentes</div>
+  <div class="section-sub">Todo lo que necesitás saber antes de comprar</div>
+  <div class="faq-item"><div class="faq-q">¿Hacen envíos a todo el país?</div><div class="faq-a">Sí, enviamos a todo Argentina por OCA y Andreani. Si estás en Resistencia o Gran Chaco también podés retirar sin costo.</div></div>
+  <div class="faq-item"><div class="faq-q">¿Qué medios de pago aceptan?</div><div class="faq-a">Aceptamos tarjetas de crédito, débito y transferencia bancaria, todo procesado de forma segura por Mercado Pago.</div></div>
+  <div class="faq-item"><div class="faq-q">¿Los productos tienen garantía?</div><div class="faq-a">Sí, todos nuestros productos tienen garantía. Ante cualquier problema nos contactás por WhatsApp y lo resolvemos.</div></div>
+  <div class="faq-item"><div class="faq-q">¿Cuánto tarda en llegar mi pedido?</div><div class="faq-a">Preparamos en 1-2 días hábiles. Para Resistencia más rápido, para el resto del país entre 3 y 7 días hábiles.</div></div>
+  <div class="faq-item"><div class="faq-q">¿Puedo hacer cambios o devoluciones?</div><div class="faq-a">Sí, dentro de los 30 días de recibido el producto en su estado original. Coordinamos por WhatsApp.</div></div>
+  <div class="faq-item"><div class="faq-q">¿Puedo retirar personalmente?</div><div class="faq-a">Sí, si estás en Resistencia, Chaco, coordinamos el retiro sin costo escribiéndonos antes de completar la compra.</div></div>
+</section>
+
+<footer class="footer" id="contacto">
+  <p style="font-size:16px; font-weight:bold; color:#fff; margin-bottom:8px;">NEXT LEVEL <span>STORE</span></p>
+  <p>Resistencia, Chaco, Argentina</p>
+  <p style="margin-top:8px;">© 2026 Next Level Store — Todos los derechos reservados</p>
+</footer>
+
+</body>
+</html>
