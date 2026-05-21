@@ -5,63 +5,116 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Next Level Store — Tecnología al siguiente nivel</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: Arial, sans-serif; background: #0A0A0A; color: #fff; }
-.nav { background: #0A0A0A; border-bottom: 1px solid #222; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 10; }
-.nav-logo { font-size: 18px; font-weight: bold; color: #0066FF; letter-spacing: 1px; }
+:root {
+  --blue: #0066FF;
+  --blue-dim: rgba(0,102,255,0.12);
+  --blue-border: rgba(0,102,255,0.3);
+  --bg: #0A0A0A;
+  --bg2: #111;
+  --border: #1e1e1e;
+  --text: #fff;
+  --muted: #888;
+}
+body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); }
+
+/* NAV */
+.nav { background: rgba(10,10,10,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 62px; position: sticky; top: 0; z-index: 100; }
+.nav-logo { font-family: 'Rajdhani', sans-serif; font-size: 20px; font-weight: 700; color: var(--blue); letter-spacing: 2px; }
 .nav-links { display: flex; gap: 2rem; }
-.nav-links a { color: #aaa; font-size: 14px; text-decoration: none; }
+.nav-links a { color: var(--muted); font-size: 13px; text-decoration: none; letter-spacing: 0.5px; transition: color 0.2s; }
 .nav-links a:hover { color: #fff; }
-.nav-btn { background: #0066FF; color: #fff; border: none; padding: 8px 20px; border-radius: 6px; font-size: 14px; cursor: pointer; }
-.hero { background: #0A0A0A; padding: 5rem 2rem; text-align: center; border-bottom: 1px solid #1a1a1a; }
-.hero-badge { display: inline-block; background: rgba(0,102,255,0.1); color: #0066FF; border: 1px solid rgba(0,102,255,0.3); padding: 4px 14px; border-radius: 20px; font-size: 12px; margin-bottom: 1.5rem; }
-.hero h1 { font-size: 42px; font-weight: bold; line-height: 1.2; margin-bottom: 1rem; }
-.hero h1 span { color: #0066FF; }
-.hero p { color: #aaa; font-size: 16px; max-width: 500px; margin: 0 auto 2rem; line-height: 1.7; }
+.nav-btn { background: var(--blue); color: #fff; border: none; padding: 8px 20px; border-radius: 6px; font-size: 13px; font-family: 'Inter', sans-serif; cursor: pointer; transition: opacity 0.2s; }
+.nav-btn:hover { opacity: 0.85; }
+
+/* HERO */
+.hero { background: var(--bg); padding: 5rem 2rem 4rem; text-align: center; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(0,102,255,0.08) 0%, transparent 70%); pointer-events: none; }
+.hero-badge { display: inline-block; background: var(--blue-dim); color: var(--blue); border: 1px solid var(--blue-border); padding: 5px 16px; border-radius: 20px; font-size: 12px; margin-bottom: 1.5rem; letter-spacing: 0.5px; }
+.hero h1 { font-family: 'Rajdhani', sans-serif; font-size: 52px; font-weight: 700; line-height: 1.1; margin-bottom: 1rem; letter-spacing: 1px; }
+.hero h1 span { color: var(--blue); }
+.hero p { color: var(--muted); font-size: 15px; max-width: 480px; margin: 0 auto 2.5rem; line-height: 1.8; }
 .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-.btn-primary { background: #0066FF; color: #fff; border: none; padding: 12px 28px; border-radius: 8px; font-size: 15px; cursor: pointer; }
-.btn-secondary { background: transparent; color: #fff; border: 1px solid #444; padding: 12px 28px; border-radius: 8px; font-size: 15px; cursor: pointer; }
-.trust-bar { background: #111; border-bottom: 1px solid #1a1a1a; padding: 1rem 2rem; display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
-.trust-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #aaa; }
-.trust-item i { color: #0066FF; font-size: 16px; }
-.section { padding: 4rem 2rem; background: #0A0A0A; }
-.section-title { font-size: 24px; font-weight: bold; margin-bottom: 0.5rem; }
-.section-sub { color: #aaa; font-size: 15px; margin-bottom: 2.5rem; }
-.cats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
-.cat-card { background: #111; border: 1px solid #222; border-radius: 12px; padding: 1.5rem 1rem; text-align: center; cursor: pointer; transition: border-color 0.2s; }
-.cat-card:hover { border-color: #0066FF; }
-.cat-card i { font-size: 28px; color: #0066FF; margin-bottom: 0.75rem; display: block; }
-.cat-card p { font-size: 13px; color: #ccc; }
-.products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
-.prod-card { background: #111; border: 1px solid #222; border-radius: 12px; overflow: hidden; }
-.prod-img { background: #1a1a1a; height: 140px; display: flex; align-items: center; justify-content: center; }
-.prod-img i { font-size: 48px; color: #333; }
-.prod-info { padding: 1rem; }
-.prod-name { font-size: 14px; color: #fff; margin-bottom: 4px; }
-.prod-price { font-size: 18px; font-weight: bold; color: #0066FF; margin-bottom: 12px; }
-.prod-btn { width: 100%; background: #0066FF; color: #fff; border: none; padding: 8px; border-radius: 6px; font-size: 13px; cursor: pointer; }
-.badge-new { background: rgba(0,102,255,0.1); color: #0066FF; font-size: 11px; padding: 2px 8px; border-radius: 4px; margin-bottom: 8px; display: inline-block; }
-.how-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; }
-.step { background: #111; border: 1px solid #222; border-radius: 12px; padding: 1.5rem; text-align: center; }
-.step-num { width: 36px; height: 36px; background: #0066FF; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: bold; margin: 0 auto 1rem; }
-.step h3 { font-size: 14px; font-weight: bold; margin-bottom: 6px; }
-.step p { font-size: 12px; color: #aaa; line-height: 1.6; }
-.about { background: #111; border-top: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; padding: 4rem 2rem; }
-.about-inner { max-width: 600px; margin: 0 auto; text-align: center; }
-.about-inner h2 { font-size: 24px; font-weight: bold; margin-bottom: 1rem; }
-.about-inner p { color: #aaa; line-height: 1.8; font-size: 15px; margin-bottom: 1rem; }
-.faq { padding: 4rem 2rem; background: #0A0A0A; }
-.faq-item { border-bottom: 1px solid #1a1a1a; padding: 1.25rem 0; }
-.faq-q { font-size: 15px; font-weight: bold; margin-bottom: 0.5rem; color: #fff; }
-.faq-a { font-size: 14px; color: #aaa; line-height: 1.7; }
-.footer { background: #111; border-top: 1px solid #1a1a1a; padding: 2rem; text-align: center; }
-.footer p { color: #555; font-size: 13px; }
-.footer span { color: #0066FF; }
+.btn-primary { background: var(--blue); color: #fff; border: none; padding: 13px 32px; border-radius: 8px; font-size: 14px; font-family: 'Inter', sans-serif; cursor: pointer; transition: opacity 0.2s; }
+.btn-primary:hover { opacity: 0.85; }
+.btn-secondary { background: transparent; color: #fff; border: 1px solid #333; padding: 13px 32px; border-radius: 8px; font-size: 14px; font-family: 'Inter', sans-serif; cursor: pointer; transition: border-color 0.2s, color 0.2s; }
+.btn-secondary:hover { border-color: var(--blue); color: var(--blue); }
+
+/* TRUST BAR */
+.trust-bar { background: var(--bg2); border-bottom: 1px solid var(--border); padding: 1rem 2rem; display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
+.trust-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--muted); letter-spacing: 0.3px; }
+.trust-item i { color: var(--blue); font-size: 16px; }
+
+/* SECTIONS */
+.section { padding: 4rem 2rem; background: var(--bg); }
+.section-header { margin-bottom: 2.5rem; }
+.section-title { font-family: 'Rajdhani', sans-serif; font-size: 26px; font-weight: 700; margin-bottom: 4px; letter-spacing: 0.5px; }
+.section-sub { color: var(--muted); font-size: 14px; }
+
+/* CATEGORIES */
+.cats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+.cat-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 1.75rem 1rem; text-align: center; cursor: pointer; transition: border-color 0.2s, transform 0.2s; }
+.cat-card:hover { border-color: var(--blue); transform: translateY(-2px); }
+.cat-card i { font-size: 30px; color: var(--blue); margin-bottom: 0.75rem; display: block; }
+.cat-card p { font-size: 13px; color: #ccc; font-weight: 500; }
+
+/* PRODUCTS */
+.products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; }
+.prod-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; transition: border-color 0.2s, transform 0.2s; }
+.prod-card:hover { border-color: var(--blue); transform: translateY(-3px); }
+.prod-img { background: #151515; height: 150px; display: flex; align-items: center; justify-content: center; position: relative; }
+.prod-img img { width: 100%; height: 100%; object-fit: cover; }
+.prod-img i { font-size: 52px; color: #2a2a2a; }
+.prod-info { padding: 1.1rem; }
+.prod-name { font-size: 14px; color: #fff; margin-bottom: 6px; font-weight: 500; line-height: 1.4; }
+.prod-price { font-family: 'Rajdhani', sans-serif; font-size: 22px; font-weight: 700; color: var(--blue); margin-bottom: 14px; }
+.prod-btn { width: 100%; background: var(--blue); color: #fff; border: none; padding: 10px; border-radius: 8px; font-size: 13px; font-family: 'Inter', sans-serif; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; transition: opacity 0.2s; }
+.prod-btn:hover { opacity: 0.85; }
+.badge { font-size: 10px; padding: 3px 8px; border-radius: 4px; margin-bottom: 8px; display: inline-block; font-weight: 600; letter-spacing: 0.5px; }
+.badge-new { background: var(--blue-dim); color: var(--blue); border: 1px solid var(--blue-border); }
+.badge-hot { background: rgba(255,80,80,0.1); color: #ff5050; border: 1px solid rgba(255,80,80,0.3); }
+.badge-offer { background: rgba(0,200,100,0.1); color: #00c864; border: 1px solid rgba(0,200,100,0.3); }
+
+/* CATEGORY SECTION TITLES */
+.cat-section-title { font-family: 'Rajdhani', sans-serif; font-size: 18px; font-weight: 600; color: var(--blue); letter-spacing: 1px; margin-bottom: 1rem; margin-top: 2.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
+.cat-section-title:first-of-type { margin-top: 0; }
+
+/* HOW TO */
+.how-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; }
+.step { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; text-align: center; }
+.step-num { width: 38px; height: 38px; background: var(--blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; margin: 0 auto 1rem; font-family: 'Rajdhani', sans-serif; }
+.step h3 { font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+.step p { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+/* ABOUT */
+.about { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 4rem 2rem; }
+.about-inner { max-width: 580px; margin: 0 auto; text-align: center; }
+.about-inner h2 { font-family: 'Rajdhani', sans-serif; font-size: 28px; font-weight: 700; margin-bottom: 1rem; letter-spacing: 0.5px; }
+.about-inner p { color: var(--muted); line-height: 1.9; font-size: 14px; margin-bottom: 1rem; }
+
+/* FAQ */
+.faq { padding: 4rem 2rem; background: var(--bg); max-width: 700px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid var(--border); padding: 1.25rem 0; }
+.faq-q { font-size: 14px; font-weight: 600; margin-bottom: 6px; color: #fff; }
+.faq-a { font-size: 13px; color: var(--muted); line-height: 1.8; }
+
+/* WHATSAPP FLOAT */
+.wa-float { position: fixed; bottom: 24px; right: 24px; background: #25D366; color: #fff; border: none; width: 56px; height: 56px; border-radius: 50%; font-size: 26px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 20px rgba(37,211,102,0.4); z-index: 999; transition: transform 0.2s; text-decoration: none; }
+.wa-float:hover { transform: scale(1.1); }
+
+/* FOOTER */
+.footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 2.5rem 2rem; text-align: center; }
+.footer-logo { font-family: 'Rajdhani', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+.footer-logo span { color: var(--blue); }
+.footer p { color: #444; font-size: 12px; line-height: 1.8; }
+
 @media (max-width: 600px) {
   .nav-links { display: none; }
-  .hero h1 { font-size: 28px; }
+  .hero h1 { font-size: 36px; }
   .trust-bar { gap: 1rem; }
+  .faq { padding: 3rem 1.5rem; }
 }
 </style>
 </head>
@@ -75,16 +128,16 @@ body { font-family: Arial, sans-serif; background: #0A0A0A; color: #fff; }
     <a href="#como-comprar">Cómo comprar</a>
     <a href="#contacto">Contacto</a>
   </div>
-  <button class="nav-btn">Ver tienda</button>
+  <button class="nav-btn" onclick="window.open('https://wa.me/5493624706831?text=Hola!%20Quiero%20consultar%20sobre%20sus%20productos','_blank')">Contactar</button>
 </nav>
 
 <section class="hero" id="inicio">
   <div class="hero-badge">📍 Resistencia, Chaco</div>
   <h1>Tecnología al<br><span>siguiente nivel</span></h1>
-  <p>Teléfonos, auriculares, cargadores y accesorios. Envíos a todo Argentina con atención personalizada.</p>
+  <p>Teléfonos, relojes inteligentes y auriculares. Envíos a todo Argentina con atención personalizada.</p>
   <div class="hero-btns">
-    <button class="btn-primary">Ver productos</button>
-    <button class="btn-secondary">Contactar por WhatsApp</button>
+    <button class="btn-primary" onclick="document.getElementById('productos').scrollIntoView({behavior:'smooth'})">Ver productos</button>
+    <button class="btn-secondary" onclick="window.open('https://wa.me/5493624706831?text=Hola!%20Quiero%20consultar%20sobre%20sus%20productos','_blank')">Contactar por WhatsApp</button>
   </div>
 </section>
 
@@ -92,86 +145,151 @@ body { font-family: Arial, sans-serif; background: #0A0A0A; color: #fff; }
   <div class="trust-item"><i class="ti ti-shield-check"></i> Compra segura</div>
   <div class="trust-item"><i class="ti ti-truck-delivery"></i> Envíos a todo el país</div>
   <div class="trust-item"><i class="ti ti-credit-card"></i> Mercado Pago</div>
-  <div class="trust-item"><i class="ti ti-message-circle"></i> Atención por WhatsApp</div>
+  <div class="trust-item"><i class="ti ti-brand-whatsapp"></i> Atención por WhatsApp</div>
 </div>
 
+<!-- CATEGORÍAS -->
 <section class="section" id="productos">
-  <div class="section-title">Categorías</div>
-  <div class="section-sub">Todo lo que necesitás para tu celular</div>
+  <div class="section-header">
+    <div class="section-title">Categorías</div>
+    <div class="section-sub">Explorá nuestro catálogo completo</div>
+  </div>
   <div class="cats-grid">
     <div class="cat-card"><i class="ti ti-device-mobile"></i><p>Teléfonos</p></div>
+    <div class="cat-card"><i class="ti ti-device-watch"></i><p>Relojes</p></div>
     <div class="cat-card"><i class="ti ti-headphones"></i><p>Auriculares</p></div>
-    <div class="cat-card"><i class="ti ti-plug"></i><p>Cargadores</p></div>
-    <div class="cat-card"><i class="ti ti-cable"></i><p>Cables</p></div>
-    <div class="cat-card"><i class="ti ti-device-ipad"></i><p>Fundas</p></div>
-    <div class="cat-card"><i class="ti ti-tool"></i><p>Accesorios</p></div>
   </div>
 </section>
 
-<section class="section">
-  <div class="section-title">Productos destacados</div>
-  <div class="section-sub">Los más vendidos esta semana</div>
+<!-- PRODUCTOS -->
+<section class="section" style="padding-top:0">
+  <div class="section-header">
+    <div class="section-title">Nuestros productos</div>
+    <div class="section-sub">Todo con garantía y atención personalizada</div>
+  </div>
+
+  <!-- TELÉFONOS -->
+  <div class="cat-section-title"><i class="ti ti-device-mobile"></i> Teléfonos</div>
   <div class="products-grid">
     <div class="prod-card">
       <div class="prod-img"><i class="ti ti-device-mobile"></i></div>
       <div class="prod-info">
-        <div class="badge-new">Nuevo</div>
-        <div class="prod-name">Smartphone Android 128GB</div>
-        <div class="prod-price">$XXX.XXX</div>
-        <button class="prod-btn">Agregar al carrito</button>
+        <div class="badge badge-new">NUEVO</div>
+        <div class="prod-name">Samsung A16</div>
+        <div class="prod-price">$310.000</div>
+        <button class="prod-btn" onclick="window.open('https://wa.me/5493624706831?text=Hola!%20Me%20interesa%20el%20Samsung%20A16%20(%24310.000).%20%C2%BFEst%C3%A1%20disponible%3F','_blank')">
+          <i class="ti ti-brand-whatsapp"></i> Consultar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- RELOJES -->
+  <div class="cat-section-title"><i class="ti ti-device-watch"></i> Relojes Inteligentes</div>
+  <div class="products-grid">
+    <div class="prod-card">
+      <div class="prod-img"><i class="ti ti-device-watch"></i></div>
+      <div class="prod-info">
+        <div class="badge badge-offer">OFERTA</div>
+        <div class="prod-name">SmartWatch D18 Macaron</div>
+        <div class="prod-price">$11.000</div>
+        <button class="prod-btn" onclick="window.open('https://wa.me/5493624706831?text=Hola!%20Me%20interesa%20el%20SmartWatch%20D18%20Macaron%20(%2411.000).%20%C2%BFEst%C3%A1%20disponible%3F','_blank')">
+          <i class="ti ti-brand-whatsapp"></i> Consultar
+        </button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img"><i class="ti ti-device-watch"></i></div>
+      <div class="prod-info">
+        <div class="badge badge-offer">OFERTA</div>
+        <div class="prod-name">SmartWatch D20 Macaron</div>
+        <div class="prod-price">$11.000</div>
+        <button class="prod-btn" onclick="window.open('https://wa.me/5493624706831?text=Hola!%20Me%20interesa%20el%20SmartWatch%20D20%20Macaron%20(%2411.000).%20%C2%BFEst%C3%A1%20disponible%3F','_blank')">
+          <i class="ti ti-brand-whatsapp"></i> Consultar
+        </button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img"><i class="ti ti-device-watch"></i></div>
+      <div class="prod-info">
+        <div class="badge badge-hot">POPULAR</div>
+        <div class="prod-name">SmartWatch SU 30</div>
+        <div class="prod-price">$30.000</div>
+        <button class="prod-btn" onclick="window.open('https://wa.me/5493624706831?text=Hola!%20Me%20interesa%20el%20SmartWatch%20SU%2030%20(%2430.000).%20%C2%BFEst%C3%A1%20disponible%3F','_blank')">
+          <i class="ti ti-brand-whatsapp"></i> Consultar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- AURICULARES -->
+  <div class="cat-section-title"><i class="ti ti-headphones"></i> Auriculares</div>
+  <div class="products-grid">
+    <div class="prod-card">
+      <div class="prod-img"><i class="ti ti-headphones"></i></div>
+      <div class="prod-info">
+        <div class="badge badge-new">NUEVO</div>
+        <div class="prod-name">M25 Inalámbrico</div>
+        <div class="prod-price">$16.000</div>
+        <button class="prod-btn" onclick="window.open('https://wa.me/5493624706831?text=Hola!%20Me%20interesa%20el%20Auricular%20M25%20Inal%C3%A1mbrico%20(%2416.000).%20%C2%BFEst%C3%A1%20disponible%3F','_blank')">
+          <i class="ti ti-brand-whatsapp"></i> Consultar
+        </button>
       </div>
     </div>
     <div class="prod-card">
       <div class="prod-img"><i class="ti ti-headphones"></i></div>
       <div class="prod-info">
-        <div class="badge-new">Oferta</div>
-        <div class="prod-name">Auriculares Bluetooth TWS</div>
-        <div class="prod-price">$XX.XXX</div>
-        <button class="prod-btn">Agregar al carrito</button>
+        <div class="badge badge-hot">POPULAR</div>
+        <div class="prod-name">ULTRA POD Pro Inalámbrico</div>
+        <div class="prod-price">$13.000</div>
+        <button class="prod-btn" onclick="window.open('https://wa.me/5493624706831?text=Hola!%20Me%20interesa%20el%20ULTRA%20POD%20Pro%20Inal%C3%A1mbrico%20(%2413.000).%20%C2%BFEst%C3%A1%20disponible%3F','_blank')">
+          <i class="ti ti-brand-whatsapp"></i> Consultar
+        </button>
       </div>
     </div>
     <div class="prod-card">
-      <div class="prod-img"><i class="ti ti-plug"></i></div>
+      <div class="prod-img"><i class="ti ti-headphones"></i></div>
       <div class="prod-info">
-        <div class="prod-name">Cargador rápido 65W</div>
-        <div class="prod-price">$XX.XXX</div>
-        <button class="prod-btn">Agregar al carrito</button>
-      </div>
-    </div>
-    <div class="prod-card">
-      <div class="prod-img"><i class="ti ti-cable"></i></div>
-      <div class="prod-info">
-        <div class="prod-name">Cable USB-C trenzado 2m</div>
-        <div class="prod-price">$X.XXX</div>
-        <button class="prod-btn">Agregar al carrito</button>
+        <div class="badge badge-new">NUEVO</div>
+        <div class="prod-name">M90 Pro Inalámbrico</div>
+        <div class="prod-price">$15.000</div>
+        <button class="prod-btn" onclick="window.open('https://wa.me/5493624706831?text=Hola!%20Me%20interesa%20el%20Auricular%20M90%20Pro%20Inal%C3%A1mbrico%20(%2415.000).%20%C2%BFEst%C3%A1%20disponible%3F','_blank')">
+          <i class="ti ti-brand-whatsapp"></i> Consultar
+        </button>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section" id="como-comprar">
-  <div class="section-title">¿Cómo comprar?</div>
-  <div class="section-sub">Simple, rápido y seguro</div>
+<!-- CÓMO COMPRAR -->
+<section class="section" id="como-comprar" style="background: var(--bg2); border-top: 1px solid var(--border);">
+  <div class="section-header">
+    <div class="section-title">¿Cómo comprar?</div>
+    <div class="section-sub">Simple, rápido y seguro</div>
+  </div>
   <div class="how-steps">
     <div class="step"><div class="step-num">1</div><h3>Elegí tu producto</h3><p>Explorá el catálogo y seleccioná lo que necesitás</p></div>
-    <div class="step"><div class="step-num">2</div><h3>Agregá al carrito</h3><p>Podés seguir comprando o ir directo a pagar</p></div>
+    <div class="step"><div class="step-num">2</div><h3>Consultá por WhatsApp</h3><p>Tocá el botón y te respondemos al instante</p></div>
     <div class="step"><div class="step-num">3</div><h3>Elegí el envío</h3><p>OCA, Andreani o retiro gratis en Resistencia</p></div>
     <div class="step"><div class="step-num">4</div><h3>Pagá seguro</h3><p>Tarjeta, débito o transferencia vía Mercado Pago</p></div>
     <div class="step"><div class="step-num">5</div><h3>¡Listo!</h3><p>Te avisamos cuando tu pedido esté en camino</p></div>
   </div>
 </section>
 
+<!-- SOBRE NOSOTROS -->
 <section class="about">
   <div class="about-inner">
     <h2>¿Quiénes somos?</h2>
-    <p>Somos un emprendimiento de Resistencia, Chaco, especializado en tecnología y accesorios para celulares. Nacimos con un objetivo claro: acercar productos de calidad a precios accesibles, con la atención personalizada que las grandes tiendas no te dan.</p>
-    <p>Trabajamos con teléfonos, auriculares, cargadores, cables y todo lo que necesitás para sacarle el máximo provecho a tu dispositivo.</p>
+    <p>Somos un emprendimiento de Resistencia, Chaco, especializado en tecnología y accesorios. Nacimos con un objetivo claro: acercar productos de calidad a precios accesibles, con la atención personalizada que las grandes tiendas no te dan.</p>
+    <p>Trabajamos con teléfonos, relojes inteligentes y auriculares para que tengas todo lo que necesitás en un solo lugar.</p>
   </div>
 </section>
 
+<!-- FAQ -->
+<div style="background: var(--bg);">
 <section class="faq">
-  <div class="section-title">Preguntas frecuentes</div>
-  <div class="section-sub">Todo lo que necesitás saber antes de comprar</div>
+  <div class="section-title" style="text-align:center; margin-bottom: 4px;">Preguntas frecuentes</div>
+  <div class="section-sub" style="text-align:center; margin-bottom: 2rem;">Todo lo que necesitás saber antes de comprar</div>
   <div class="faq-item"><div class="faq-q">¿Hacen envíos a todo el país?</div><div class="faq-a">Sí, enviamos a todo Argentina por OCA y Andreani. Si estás en Resistencia o Gran Chaco también podés retirar sin costo.</div></div>
   <div class="faq-item"><div class="faq-q">¿Qué medios de pago aceptan?</div><div class="faq-a">Aceptamos tarjetas de crédito, débito y transferencia bancaria, todo procesado de forma segura por Mercado Pago.</div></div>
   <div class="faq-item"><div class="faq-q">¿Los productos tienen garantía?</div><div class="faq-a">Sí, todos nuestros productos tienen garantía. Ante cualquier problema nos contactás por WhatsApp y lo resolvemos.</div></div>
@@ -179,12 +297,20 @@ body { font-family: Arial, sans-serif; background: #0A0A0A; color: #fff; }
   <div class="faq-item"><div class="faq-q">¿Puedo hacer cambios o devoluciones?</div><div class="faq-a">Sí, dentro de los 30 días de recibido el producto en su estado original. Coordinamos por WhatsApp.</div></div>
   <div class="faq-item"><div class="faq-q">¿Puedo retirar personalmente?</div><div class="faq-a">Sí, si estás en Resistencia, Chaco, coordinamos el retiro sin costo escribiéndonos antes de completar la compra.</div></div>
 </section>
+</div>
 
+<!-- FOOTER -->
 <footer class="footer" id="contacto">
-  <p style="font-size:16px; font-weight:bold; color:#fff; margin-bottom:8px;">NEXT LEVEL <span>STORE</span></p>
+  <div class="footer-logo">NEXT LEVEL <span>STORE</span></div>
   <p>Resistencia, Chaco, Argentina</p>
-  <p style="margin-top:8px;">© 2026 Next Level Store — Todos los derechos reservados</p>
+  <p style="margin-top: 4px;">📱 Consultas por WhatsApp: +54 9 362 470-6831</p>
+  <p style="margin-top: 12px;">© 2026 Next Level Store — Todos los derechos reservados</p>
 </footer>
+
+<!-- BOTÓN FLOTANTE WHATSAPP -->
+<a class="wa-float" href="https://wa.me/5493624706831?text=Hola!%20Quiero%20consultar%20sobre%20sus%20productos" target="_blank" title="Contactar por WhatsApp">
+  <i class="ti ti-brand-whatsapp"></i>
+</a>
 
 </body>
 </html>
