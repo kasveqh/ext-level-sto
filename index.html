@@ -19,8 +19,6 @@
   --muted: #888;
 }
 body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); }
-
-/* NAV */
 .nav { background: rgba(10,10,10,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 62px; position: sticky; top: 0; z-index: 100; }
 .nav-logo { font-family: 'Rajdhani', sans-serif; font-size: 20px; font-weight: 700; color: var(--blue); letter-spacing: 2px; }
 .nav-links { display: flex; gap: 2rem; }
@@ -28,8 +26,6 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
 .nav-links a:hover { color: #fff; }
 .nav-btn { background: var(--blue); color: #fff; border: none; padding: 8px 20px; border-radius: 6px; font-size: 13px; font-family: 'Inter', sans-serif; cursor: pointer; transition: opacity 0.2s; }
 .nav-btn:hover { opacity: 0.85; }
-
-/* HERO */
 .hero { background: var(--bg); padding: 5rem 2rem 4rem; text-align: center; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
 .hero::before { content: ''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(0,102,255,0.08) 0%, transparent 70%); pointer-events: none; }
 .hero-badge { display: inline-block; background: var(--blue-dim); color: var(--blue); border: 1px solid var(--blue-border); padding: 5px 16px; border-radius: 20px; font-size: 12px; margin-bottom: 1.5rem; letter-spacing: 0.5px; }
@@ -41,30 +37,31 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
 .btn-primary:hover { opacity: 0.85; }
 .btn-secondary { background: transparent; color: #fff; border: 1px solid #333; padding: 13px 32px; border-radius: 8px; font-size: 14px; font-family: 'Inter', sans-serif; cursor: pointer; transition: border-color 0.2s, color 0.2s; }
 .btn-secondary:hover { border-color: var(--blue); color: var(--blue); }
-
-/* TRUST BAR */
 .trust-bar { background: var(--bg2); border-bottom: 1px solid var(--border); padding: 1rem 2rem; display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
 .trust-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--muted); letter-spacing: 0.3px; }
 .trust-item i { color: var(--blue); font-size: 16px; }
-
-/* SECTIONS */
 .section { padding: 4rem 2rem; background: var(--bg); }
 .section-header { margin-bottom: 2.5rem; }
 .section-title { font-family: 'Rajdhani', sans-serif; font-size: 26px; font-weight: 700; margin-bottom: 4px; letter-spacing: 0.5px; }
 .section-sub { color: var(--muted); font-size: 14px; }
 
-/* CATEGORIES */
-.cats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
-.cat-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 1.75rem 1rem; text-align: center; cursor: pointer; transition: border-color 0.2s, transform 0.2s; }
-.cat-card:hover { border-color: var(--blue); transform: translateY(-2px); }
-.cat-card i { font-size: 30px; color: var(--blue); margin-bottom: 0.75rem; display: block; }
-.cat-card p { font-size: 13px; color: #ccc; font-weight: 500; }
+/* CATEGORY FILTER BUTTONS */
+.filter-bar { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 2rem; }
+.filter-btn { background: var(--bg2); border: 1px solid var(--border); color: var(--muted); padding: 8px 20px; border-radius: 30px; font-size: 13px; font-family: 'Inter', sans-serif; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 6px; }
+.filter-btn:hover { border-color: var(--blue); color: #fff; }
+.filter-btn.active { background: var(--blue); border-color: var(--blue); color: #fff; }
+.filter-btn i { font-size: 15px; }
+
+/* CATEGORY SECTION TITLES */
+.cat-section { margin-bottom: 2.5rem; transition: all 0.3s; }
+.cat-section-title { font-family: 'Rajdhani', sans-serif; font-size: 18px; font-weight: 600; color: var(--blue); letter-spacing: 1px; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
+.cat-section.hidden { display: none; }
 
 /* PRODUCTS */
 .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; }
 .prod-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; transition: border-color 0.2s, transform 0.2s; }
 .prod-card:hover { border-color: var(--blue); transform: translateY(-3px); }
-.prod-img { background: #151515; height: 150px; display: flex; align-items: center; justify-content: center; position: relative; }
+.prod-img { background: #151515; height: 150px; display: flex; align-items: center; justify-content: center; }
 .prod-img img { width: 100%; height: 100%; object-fit: cover; }
 .prod-img i { font-size: 52px; color: #2a2a2a; }
 .prod-info { padding: 1.1rem; }
@@ -77,39 +74,26 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
 .badge-hot { background: rgba(255,80,80,0.1); color: #ff5050; border: 1px solid rgba(255,80,80,0.3); }
 .badge-offer { background: rgba(0,200,100,0.1); color: #00c864; border: 1px solid rgba(0,200,100,0.3); }
 
-/* CATEGORY SECTION TITLES */
-.cat-section-title { font-family: 'Rajdhani', sans-serif; font-size: 18px; font-weight: 600; color: var(--blue); letter-spacing: 1px; margin-bottom: 1rem; margin-top: 2.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
-.cat-section-title:first-of-type { margin-top: 0; }
-
 /* HOW TO */
 .how-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; }
 .step { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; text-align: center; }
 .step-num { width: 38px; height: 38px; background: var(--blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; margin: 0 auto 1rem; font-family: 'Rajdhani', sans-serif; }
 .step h3 { font-size: 13px; font-weight: 600; margin-bottom: 6px; }
 .step p { font-size: 12px; color: var(--muted); line-height: 1.6; }
-
-/* ABOUT */
 .about { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 4rem 2rem; }
 .about-inner { max-width: 580px; margin: 0 auto; text-align: center; }
 .about-inner h2 { font-family: 'Rajdhani', sans-serif; font-size: 28px; font-weight: 700; margin-bottom: 1rem; letter-spacing: 0.5px; }
 .about-inner p { color: var(--muted); line-height: 1.9; font-size: 14px; margin-bottom: 1rem; }
-
-/* FAQ */
 .faq { padding: 4rem 2rem; background: var(--bg); max-width: 700px; margin: 0 auto; }
 .faq-item { border-bottom: 1px solid var(--border); padding: 1.25rem 0; }
 .faq-q { font-size: 14px; font-weight: 600; margin-bottom: 6px; color: #fff; }
 .faq-a { font-size: 13px; color: var(--muted); line-height: 1.8; }
-
-/* WHATSAPP FLOAT */
 .wa-float { position: fixed; bottom: 24px; right: 24px; background: #25D366; color: #fff; border: none; width: 56px; height: 56px; border-radius: 50%; font-size: 26px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 20px rgba(37,211,102,0.4); z-index: 999; transition: transform 0.2s; text-decoration: none; }
 .wa-float:hover { transform: scale(1.1); }
-
-/* FOOTER */
 .footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 2.5rem 2rem; text-align: center; }
 .footer-logo { font-family: 'Rajdhani', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 6px; }
 .footer-logo span { color: var(--blue); }
 .footer p { color: #444; font-size: 12px; line-height: 1.8; }
-
 @media (max-width: 600px) {
   .nav-links { display: none; }
   .hero h1 { font-size: 36px; }
@@ -148,114 +132,122 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
   <div class="trust-item"><i class="ti ti-brand-whatsapp"></i> Atención por WhatsApp</div>
 </div>
 
-<!-- CATEGORÍAS -->
 <section class="section" id="productos">
-  <div class="section-header">
-    <div class="section-title">Categorías</div>
-    <div class="section-sub">Explorá nuestro catálogo completo</div>
-  </div>
-  <div class="cats-grid">
-    <div class="cat-card"><i class="ti ti-device-mobile"></i><p>Teléfonos</p></div>
-    <div class="cat-card"><i class="ti ti-device-watch"></i><p>Relojes</p></div>
-    <div class="cat-card"><i class="ti ti-headphones"></i><p>Auriculares</p></div>
-  </div>
-</section>
-
-<!-- PRODUCTOS -->
-<section class="section" style="padding-top:0">
   <div class="section-header">
     <div class="section-title">Nuestros productos</div>
     <div class="section-sub">Todo con garantía y atención personalizada</div>
   </div>
 
+  <!-- FILTER BUTTONS -->
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filtrar('todos')">
+      <i class="ti ti-layout-grid"></i> Todos
+    </button>
+    <button class="filter-btn" onclick="filtrar('telefonos')">
+      <i class="ti ti-device-mobile"></i> Teléfonos
+    </button>
+    <button class="filter-btn" onclick="filtrar('relojes')">
+      <i class="ti ti-device-watch"></i> Relojes
+    </button>
+    <button class="filter-btn" onclick="filtrar('auriculares')">
+      <i class="ti ti-headphones"></i> Auriculares
+    </button>
+  </div>
+
   <!-- TELÉFONOS -->
-  <div class="cat-section-title"><i class="ti ti-device-mobile"></i> Teléfonos</div>
-  <div class="products-grid">
-    <div class="prod-card">
-      <div class="prod-img"><i class="ti ti-device-mobile"></i></div>
-      <div class="prod-info">
-        <div class="badge badge-new">NUEVO</div>
-        <div class="prod-name">Samsung A16</div>
-        <div class="prod-price">$310.000</div>
-        <button class="prod-btn" onclick="window.open('https://wa.me/5493624706831?text=Hola!%20Me%20interesa%20el%20Samsung%20A16%20(%24310.000).%20%C2%BFEst%C3%A1%20disponible%3F','_blank')">
-          <i class="ti ti-brand-whatsapp"></i> Consultar
-        </button>
+  <div class="cat-section" id="cat-telefonos">
+    <div class="cat-section-title"><i class="ti ti-device-mobile"></i> Teléfonos</div>
+    <div class="products-grid">
+      <div class="prod-card">
+        <div class="prod-img"><i class="ti ti-device-mobile"></i></div>
+        <div class="prod-info">
+          <div class="badge badge-new">NUEVO</div>
+          <div class="prod-name">Samsung A16</div>
+          <div class="prod-price">$310.000</div>
+          <button class="prod-btn" onclick="window.open('https://wa.me/5493624706831?text=Hola!%20Me%20interesa%20el%20Samsung%20A16%20(%24310.000).%20%C2%BFEst%C3%A1%20disponible%3F','_blank')">
+            <i class="ti ti-brand-whatsapp"></i> Consultar
+          </button>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- RELOJES -->
-  <div class="cat-section-title"><i class="ti ti-device-watch"></i> Relojes Inteligentes</div>
-  <div class="products-grid">
-    <div class="prod-card">
-      <div class="prod-img"><i class="ti ti-device-watch"></i></div>
-      <div class="prod-info">
-        <div class="badge badge-offer">OFERTA</div>
-        <div class="prod-name">SmartWatch D18 Macaron</div>
-        <div class="prod-price">$11.000</div>
-        <button class="prod-btn" onclick="window.open('https://wa.me/5493624706831?text=Hola!%20Me%20interesa%20el%20SmartWatch%20D18%20Macaron%20(%2411.000).%20%C2%BFEst%C3%A1%20disponible%3F','_blank')">
-          <i class="ti ti-brand-whatsapp"></i> Consultar
-        </button>
+  <div class="cat-section" id="cat-relojes">
+    <div class="cat-section-title"><i class="ti ti-device-watch"></i> Relojes Inteligentes</div>
+    <div class="products-grid">
+      <div class="prod-card">
+        <div class="prod-img"><i class="ti ti-device-watch"></i></div>
+        <div class="prod-info">
+          <div class="badge badge-offer">OFERTA</div>
+          <div class="prod-name">SmartWatch D18 Macaron</div>
+          <div class="prod-price">$11.000</div>
+          <button class="prod-btn" onclick="window.open('https://wa.me/5493624706831?text=Hola!%20Me%20interesa%20el%20SmartWatch%20D18%20Macaron%20(%2411.000).%20%C2%BFEst%C3%A1%20disponible%3F','_blank')">
+            <i class="ti ti-brand-whatsapp"></i> Consultar
+          </button>
+        </div>
       </div>
-    </div>
-    <div class="prod-card">
-      <div class="prod-img"><i class="ti ti-device-watch"></i></div>
-      <div class="prod-info">
-        <div class="badge badge-offer">OFERTA</div>
-        <div class="prod-name">SmartWatch D20 Macaron</div>
-        <div class="prod-price">$11.000</div>
-        <button class="prod-btn" onclick="window.open('https://wa.me/5493624706831?text=Hola!%20Me%20interesa%20el%20SmartWatch%20D20%20Macaron%20(%2411.000).%20%C2%BFEst%C3%A1%20disponible%3F','_blank')">
-          <i class="ti ti-brand-whatsapp"></i> Consultar
-        </button>
+      <div class="prod-card">
+        <div class="prod-img"><i class="ti ti-device-watch"></i></div>
+        <div class="prod-info">
+          <div class="badge badge-offer">OFERTA</div>
+          <div class="prod-name">SmartWatch D20 Macaron</div>
+          <div class="prod-price">$11.000</div>
+          <button class="prod-btn" onclick="window.open('https://wa.me/5493624706831?text=Hola!%20Me%20interesa%20el%20SmartWatch%20D20%20Macaron%20(%2411.000).%20%C2%BFEst%C3%A1%20disponible%3F','_blank')">
+            <i class="ti ti-brand-whatsapp"></i> Consultar
+          </button>
+        </div>
       </div>
-    </div>
-    <div class="prod-card">
-      <div class="prod-img"><i class="ti ti-device-watch"></i></div>
-      <div class="prod-info">
-        <div class="badge badge-hot">POPULAR</div>
-        <div class="prod-name">SmartWatch SU 30</div>
-        <div class="prod-price">$30.000</div>
-        <button class="prod-btn" onclick="window.open('https://wa.me/5493624706831?text=Hola!%20Me%20interesa%20el%20SmartWatch%20SU%2030%20(%2430.000).%20%C2%BFEst%C3%A1%20disponible%3F','_blank')">
-          <i class="ti ti-brand-whatsapp"></i> Consultar
-        </button>
+      <div class="prod-card">
+        <div class="prod-img"><i class="ti ti-device-watch"></i></div>
+        <div class="prod-info">
+          <div class="badge badge-hot">POPULAR</div>
+          <div class="prod-name">SmartWatch SU 30</div>
+          <div class="prod-price">$30.000</div>
+          <button class="prod-btn" onclick="window.open('https://wa.me/5493624706831?text=Hola!%20Me%20interesa%20el%20SmartWatch%20SU%2030%20(%2430.000).%20%C2%BFEst%C3%A1%20disponible%3F','_blank')">
+            <i class="ti ti-brand-whatsapp"></i> Consultar
+          </button>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- AURICULARES -->
-  <div class="cat-section-title"><i class="ti ti-headphones"></i> Auriculares</div>
-  <div class="products-grid">
-    <div class="prod-card">
-      <div class="prod-img"><i class="ti ti-headphones"></i></div>
-      <div class="prod-info">
-        <div class="badge badge-new">NUEVO</div>
-        <div class="prod-name">M25 Inalámbrico</div>
-        <div class="prod-price">$16.000</div>
-        <button class="prod-btn" onclick="window.open('https://wa.me/5493624706831?text=Hola!%20Me%20interesa%20el%20Auricular%20M25%20Inal%C3%A1mbrico%20(%2416.000).%20%C2%BFEst%C3%A1%20disponible%3F','_blank')">
-          <i class="ti ti-brand-whatsapp"></i> Consultar
-        </button>
+  <div class="cat-section" id="cat-auriculares">
+    <div class="cat-section-title"><i class="ti ti-headphones"></i> Auriculares</div>
+    <div class="products-grid">
+      <div class="prod-card">
+        <div class="prod-img"><i class="ti ti-headphones"></i></div>
+        <div class="prod-info">
+          <div class="badge badge-new">NUEVO</div>
+          <div class="prod-name">M25 Inalámbrico</div>
+          <div class="prod-price">$16.000</div>
+          <button class="prod-btn" onclick="window.open('https://wa.me/5493624706831?text=Hola!%20Me%20interesa%20el%20Auricular%20M25%20Inal%C3%A1mbrico%20(%2416.000).%20%C2%BFEst%C3%A1%20disponible%3F','_blank')">
+            <i class="ti ti-brand-whatsapp"></i> Consultar
+          </button>
+        </div>
       </div>
-    </div>
-    <div class="prod-card">
-      <div class="prod-img"><i class="ti ti-headphones"></i></div>
-      <div class="prod-info">
-        <div class="badge badge-hot">POPULAR</div>
-        <div class="prod-name">ULTRA POD Pro Inalámbrico</div>
-        <div class="prod-price">$13.000</div>
-        <button class="prod-btn" onclick="window.open('https://wa.me/5493624706831?text=Hola!%20Me%20interesa%20el%20ULTRA%20POD%20Pro%20Inal%C3%A1mbrico%20(%2413.000).%20%C2%BFEst%C3%A1%20disponible%3F','_blank')">
-          <i class="ti ti-brand-whatsapp"></i> Consultar
-        </button>
+      <div class="prod-card">
+        <div class="prod-img"><i class="ti ti-headphones"></i></div>
+        <div class="prod-info">
+          <div class="badge badge-hot">POPULAR</div>
+          <div class="prod-name">ULTRA POD Pro Inalámbrico</div>
+          <div class="prod-price">$13.000</div>
+          <button class="prod-btn" onclick="window.open('https://wa.me/5493624706831?text=Hola!%20Me%20interesa%20el%20ULTRA%20POD%20Pro%20Inal%C3%A1mbrico%20(%2413.000).%20%C2%BFEst%C3%A1%20disponible%3F','_blank')">
+            <i class="ti ti-brand-whatsapp"></i> Consultar
+          </button>
+        </div>
       </div>
-    </div>
-    <div class="prod-card">
-      <div class="prod-img"><i class="ti ti-headphones"></i></div>
-      <div class="prod-info">
-        <div class="badge badge-new">NUEVO</div>
-        <div class="prod-name">M90 Pro Inalámbrico</div>
-        <div class="prod-price">$15.000</div>
-        <button class="prod-btn" onclick="window.open('https://wa.me/5493624706831?text=Hola!%20Me%20interesa%20el%20Auricular%20M90%20Pro%20Inal%C3%A1mbrico%20(%2415.000).%20%C2%BFEst%C3%A1%20disponible%3F','_blank')">
-          <i class="ti ti-brand-whatsapp"></i> Consultar
-        </button>
+      <div class="prod-card">
+        <div class="prod-img"><i class="ti ti-headphones"></i></div>
+        <div class="prod-info">
+          <div class="badge badge-new">NUEVO</div>
+          <div class="prod-name">M90 Pro Inalámbrico</div>
+          <div class="prod-price">$15.000</div>
+          <button class="prod-btn" onclick="window.open('https://wa.me/5493624706831?text=Hola!%20Me%20interesa%20el%20Auricular%20M90%20Pro%20Inal%C3%A1mbrico%20(%2415.000).%20%C2%BFEst%C3%A1%20disponible%3F','_blank')">
+            <i class="ti ti-brand-whatsapp"></i> Consultar
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -276,7 +268,6 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
   </div>
 </section>
 
-<!-- SOBRE NOSOTROS -->
 <section class="about">
   <div class="about-inner">
     <h2>¿Quiénes somos?</h2>
@@ -285,7 +276,6 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
   </div>
 </section>
 
-<!-- FAQ -->
 <div style="background: var(--bg);">
 <section class="faq">
   <div class="section-title" style="text-align:center; margin-bottom: 4px;">Preguntas frecuentes</div>
@@ -299,7 +289,6 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
 </section>
 </div>
 
-<!-- FOOTER -->
 <footer class="footer" id="contacto">
   <div class="footer-logo">NEXT LEVEL <span>STORE</span></div>
   <p>Resistencia, Chaco, Argentina</p>
@@ -307,10 +296,33 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
   <p style="margin-top: 12px;">© 2026 Next Level Store — Todos los derechos reservados</p>
 </footer>
 
-<!-- BOTÓN FLOTANTE WHATSAPP -->
 <a class="wa-float" href="https://wa.me/5493624706831?text=Hola!%20Quiero%20consultar%20sobre%20sus%20productos" target="_blank" title="Contactar por WhatsApp">
   <i class="ti ti-brand-whatsapp"></i>
 </a>
-  
+
+<script>
+function filtrar(categoria) {
+  const secciones = document.querySelectorAll('.cat-section');
+  const botones = document.querySelectorAll('.filter-btn');
+
+  botones.forEach(btn => btn.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+
+  secciones.forEach(sec => {
+    if (categoria === 'todos') {
+      sec.classList.remove('hidden');
+    } else {
+      if (sec.id === 'cat-' + categoria) {
+        sec.classList.remove('hidden');
+      } else {
+        sec.classList.add('hidden');
+      }
+    }
+  });
+
+  document.getElementById('productos').scrollIntoView({behavior: 'smooth'});
+}
+</script>
+
 </body>
 </html>
