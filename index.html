@@ -19,17 +19,13 @@
   --muted: #888;
 }
 body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); }
-
-/* NAV */
 .nav { background: rgba(10,10,10,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 62px; position: sticky; top: 0; z-index: 100; }
 .nav-logo img { height: 40px; width: auto; }
 .nav-links { display: flex; gap: 2rem; }
-.nav-links a { color: var(--muted); font-size: 13px; text-decoration: none; letter-spacing: 0.5px; transition: color 0.2s; }
+.nav-links a { color: var(--muted); font-size: 13px; text-decoration: none; transition: color 0.2s; }
 .nav-links a:hover { color: #fff; }
 .nav-btn { background: var(--blue); color: #fff; border: none; padding: 8px 20px; border-radius: 6px; font-size: 13px; cursor: pointer; transition: opacity 0.2s; }
 .nav-btn:hover { opacity: 0.85; }
-
-/* HERO */
 .hero { background: var(--bg); padding: 5rem 2rem 4rem; text-align: center; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
 .hero::before { content: ''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(0,102,255,0.08) 0%, transparent 70%); pointer-events: none; }
 .hero-badge { display: inline-block; background: var(--blue-dim); color: var(--blue); border: 1px solid var(--blue-border); padding: 5px 16px; border-radius: 20px; font-size: 12px; margin-bottom: 1.5rem; }
@@ -41,84 +37,63 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
 .btn-primary:hover { opacity: 0.85; }
 .btn-secondary { background: transparent; color: #fff; border: 1px solid #333; padding: 13px 32px; border-radius: 8px; font-size: 14px; cursor: pointer; transition: border-color 0.2s, color 0.2s; }
 .btn-secondary:hover { border-color: var(--blue); color: var(--blue); }
-
-/* TRUST BAR */
 .trust-bar { background: var(--bg2); border-bottom: 1px solid var(--border); padding: 1rem 2rem; display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
 .trust-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--muted); }
 .trust-item i { color: var(--blue); font-size: 16px; }
-
-/* SECTIONS */
 .section { padding: 4rem 2rem; background: var(--bg); }
 .section-header { margin-bottom: 2.5rem; }
 .section-title { font-family: 'Rajdhani', sans-serif; font-size: 26px; font-weight: 700; margin-bottom: 4px; }
 .section-sub { color: var(--muted); font-size: 14px; }
-
-/* FILTER BUTTONS */
 .filter-bar { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 2rem; }
 .filter-btn { background: var(--bg2); border: 1px solid var(--border); color: var(--muted); padding: 8px 20px; border-radius: 30px; font-size: 13px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 6px; }
 .filter-btn:hover { border-color: var(--blue); color: #fff; }
 .filter-btn.active { background: var(--blue); border-color: var(--blue); color: #fff; }
-
-/* CAT SECTIONS */
 .cat-section { margin-bottom: 2.5rem; }
 .cat-section.hidden { display: none; }
 .cat-section-title { font-family: 'Rajdhani', sans-serif; font-size: 18px; font-weight: 600; color: var(--blue); letter-spacing: 1px; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
-
-/* PRODUCTS */
 .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; }
 .prod-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; transition: border-color 0.2s, transform 0.2s; }
 .prod-card:hover { border-color: var(--blue); transform: translateY(-3px); }
 
 /* CARRUSEL */
-.carousel { position: relative; height: 200px; overflow: hidden; background: #151515; }
+.carousel { position: relative; height: 180px; overflow: hidden; background: #151515; }
 .carousel-imgs { display: flex; height: 100%; transition: transform 0.4s ease; }
-.carousel-imgs img { min-width: 100%; height: 100%; object-fit: cover; flex-shrink: 0; }
-.carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.6); border: none; color: #fff; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 12px; z-index: 2; transition: background 0.2s; }
+.carousel-imgs img { min-width: 100%; height: 100%; object-fit: contain; flex-shrink: 0; background: #151515; }
+.carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.6); border: none; color: #fff; width: 26px; height: 26px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 14px; z-index: 2; transition: background 0.2s; }
 .carousel-btn:hover { background: var(--blue); }
-.carousel-btn.prev { left: 8px; }
-.carousel-btn.next { right: 8px; }
+.carousel-btn.prev { left: 6px; }
+.carousel-btn.next { right: 6px; }
 .carousel-dots { position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%); display: flex; gap: 4px; }
-.carousel-dots span { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.3); cursor: pointer; transition: background 0.2s; }
+.carousel-dots span { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.3); cursor: pointer; transition: background 0.2s; }
 .carousel-dots span.active { background: var(--blue); }
 
-.prod-info { padding: 1.1rem; }
+.prod-info { padding: 1rem; }
 .prod-name { font-size: 14px; color: #fff; margin-bottom: 6px; font-weight: 500; }
-.prod-price { font-family: 'Rajdhani', sans-serif; font-size: 22px; font-weight: 700; color: var(--blue); margin-bottom: 14px; }
+.prod-price { font-family: 'Rajdhani', sans-serif; font-size: 22px; font-weight: 700; color: var(--blue); margin-bottom: 12px; }
 .prod-btn { width: 100%; background: var(--blue); color: #fff; border: none; padding: 10px; border-radius: 8px; font-size: 13px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; transition: opacity 0.2s; }
 .prod-btn:hover { opacity: 0.85; }
 .badge { font-size: 10px; padding: 3px 8px; border-radius: 4px; margin-bottom: 8px; display: inline-block; font-weight: 600; }
 .badge-new { background: var(--blue-dim); color: var(--blue); border: 1px solid var(--blue-border); }
 .badge-hot { background: rgba(255,80,80,0.1); color: #ff5050; border: 1px solid rgba(255,80,80,0.3); }
 .badge-offer { background: rgba(0,200,100,0.1); color: #00c864; border: 1px solid rgba(0,200,100,0.3); }
-
-/* HOW TO */
 .how-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; }
 .step { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; text-align: center; }
 .step-num { width: 38px; height: 38px; background: var(--blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; margin: 0 auto 1rem; }
 .step h3 { font-size: 13px; font-weight: 600; margin-bottom: 6px; }
 .step p { font-size: 12px; color: var(--muted); line-height: 1.6; }
-
-/* ABOUT */
 .about { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 4rem 2rem; }
 .about-inner { max-width: 580px; margin: 0 auto; text-align: center; }
 .about-inner h2 { font-family: 'Rajdhani', sans-serif; font-size: 28px; font-weight: 700; margin-bottom: 1rem; }
 .about-inner p { color: var(--muted); line-height: 1.9; font-size: 14px; margin-bottom: 1rem; }
-
-/* FAQ */
 .faq { padding: 4rem 2rem; background: var(--bg); max-width: 700px; margin: 0 auto; }
 .faq-item { border-bottom: 1px solid var(--border); padding: 1.25rem 0; }
 .faq-q { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
 .faq-a { font-size: 13px; color: var(--muted); line-height: 1.8; }
-
-/* WHATSAPP FLOAT */
 .wa-float { position: fixed; bottom: 24px; right: 24px; background: #25D366; color: #fff; width: 56px; height: 56px; border-radius: 50%; font-size: 26px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 20px rgba(37,211,102,0.4); z-index: 999; transition: transform 0.2s; text-decoration: none; }
 .wa-float:hover { transform: scale(1.1); }
-
-/* FOOTER */
 .footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 2.5rem 2rem; text-align: center; }
 .footer-logo img { height: 36px; margin-bottom: 8px; }
 .footer p { color: #444; font-size: 12px; line-height: 1.8; }
-
 @media (max-width: 600px) {
   .nav-links { display: none; }
   .hero h1 { font-size: 36px; }
@@ -182,17 +157,13 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
           </div>
           <button class="carousel-btn prev" onclick="moveCarousel('car-samsung', -1)">‹</button>
           <button class="carousel-btn next" onclick="moveCarousel('car-samsung', 1)">›</button>
-          <div class="carousel-dots">
-            <span class="active"></span><span></span><span></span>
-          </div>
+          <div class="carousel-dots"><span class="active"></span><span></span><span></span></div>
         </div>
         <div class="prod-info">
           <div class="badge badge-new">NUEVO</div>
           <div class="prod-name">Samsung A16</div>
           <div class="prod-price">$310.000</div>
-          <button class="prod-btn" onclick="window.open('https://wa.me/5493624706831?text=Hola!%20Me%20interesa%20el%20Samsung%20A16%20(%24310.000).%20%C2%BFEst%C3%A1%20disponible%3F','_blank')">
-            <i class="ti ti-brand-whatsapp"></i> Consultar
-          </button>
+          <button class="prod-btn" onclick="window.open('https://wa.me/5493624706831?text=Hola!%20Me%20interesa%20el%20Samsung%20A16%20(%24310.000).%20%C2%BFEst%C3%A1%20disponible%3F','_blank')"><i class="ti ti-brand-whatsapp"></i> Consultar</button>
         </div>
       </div>
     </div>
@@ -214,17 +185,13 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
           </div>
           <button class="carousel-btn prev" onclick="moveCarousel('car-d18', -1)">‹</button>
           <button class="carousel-btn next" onclick="moveCarousel('car-d18', 1)">›</button>
-          <div class="carousel-dots">
-            <span class="active"></span><span></span><span></span><span></span><span></span>
-          </div>
+          <div class="carousel-dots"><span class="active"></span><span></span><span></span><span></span><span></span></div>
         </div>
         <div class="prod-info">
           <div class="badge badge-offer">OFERTA</div>
           <div class="prod-name">SmartWatch D18 Macaron</div>
           <div class="prod-price">$11.000</div>
-          <button class="prod-btn" onclick="window.open('https://wa.me/5493624706831?text=Hola!%20Me%20interesa%20el%20SmartWatch%20D18%20Macaron%20(%2411.000).%20%C2%BFEst%C3%A1%20disponible%3F','_blank')">
-            <i class="ti ti-brand-whatsapp"></i> Consultar
-          </button>
+          <button class="prod-btn" onclick="window.open('https://wa.me/5493624706831?text=Hola!%20Me%20interesa%20el%20SmartWatch%20D18%20Macaron%20(%2411.000).%20%C2%BFEst%C3%A1%20disponible%3F','_blank')"><i class="ti ti-brand-whatsapp"></i> Consultar</button>
         </div>
       </div>
 
@@ -242,17 +209,13 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
           </div>
           <button class="carousel-btn prev" onclick="moveCarousel('car-d20', -1)">‹</button>
           <button class="carousel-btn next" onclick="moveCarousel('car-d20', 1)">›</button>
-          <div class="carousel-dots">
-            <span class="active"></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-          </div>
+          <div class="carousel-dots"><span class="active"></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
         </div>
         <div class="prod-info">
           <div class="badge badge-offer">OFERTA</div>
           <div class="prod-name">SmartWatch D20 Macaron</div>
           <div class="prod-price">$11.000</div>
-          <button class="prod-btn" onclick="window.open('https://wa.me/5493624706831?text=Hola!%20Me%20interesa%20el%20SmartWatch%20D20%20Macaron%20(%2411.000).%20%C2%BFEst%C3%A1%20disponible%3F','_blank')">
-            <i class="ti ti-brand-whatsapp"></i> Consultar
-          </button>
+          <button class="prod-btn" onclick="window.open('https://wa.me/5493624706831?text=Hola!%20Me%20interesa%20el%20SmartWatch%20D20%20Macaron%20(%2411.000).%20%C2%BFEst%C3%A1%20disponible%3F','_blank')"><i class="ti ti-brand-whatsapp"></i> Consultar</button>
         </div>
       </div>
 
@@ -267,9 +230,7 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
           <div class="badge badge-hot">POPULAR</div>
           <div class="prod-name">SmartWatch SU 30</div>
           <div class="prod-price">$30.000</div>
-          <button class="prod-btn" onclick="window.open('https://wa.me/5493624706831?text=Hola!%20Me%20interesa%20el%20SmartWatch%20SU%2030%20(%2430.000).%20%C2%BFEst%C3%A1%20disponible%3F','_blank')">
-            <i class="ti ti-brand-whatsapp"></i> Consultar
-          </button>
+          <button class="prod-btn" onclick="window.open('https://wa.me/5493624706831?text=Hola!%20Me%20interesa%20el%20SmartWatch%20SU%2030%20(%2430.000).%20%C2%BFEst%C3%A1%20disponible%3F','_blank')"><i class="ti ti-brand-whatsapp"></i> Consultar</button>
         </div>
       </div>
 
@@ -293,17 +254,13 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
           </div>
           <button class="carousel-btn prev" onclick="moveCarousel('car-m25', -1)">‹</button>
           <button class="carousel-btn next" onclick="moveCarousel('car-m25', 1)">›</button>
-          <div class="carousel-dots">
-            <span class="active"></span><span></span><span></span><span></span><span></span><span></span>
-          </div>
+          <div class="carousel-dots"><span class="active"></span><span></span><span></span><span></span><span></span><span></span></div>
         </div>
         <div class="prod-info">
           <div class="badge badge-new">NUEVO</div>
           <div class="prod-name">M25 Inalámbrico</div>
           <div class="prod-price">$16.000</div>
-          <button class="prod-btn" onclick="window.open('https://wa.me/5493624706831?text=Hola!%20Me%20interesa%20el%20Auricular%20M25%20Inal%C3%A1mbrico%20(%2416.000).%20%C2%BFEst%C3%A1%20disponible%3F','_blank')">
-            <i class="ti ti-brand-whatsapp"></i> Consultar
-          </button>
+          <button class="prod-btn" onclick="window.open('https://wa.me/5493624706831?text=Hola!%20Me%20interesa%20el%20Auricular%20M25%20Inal%C3%A1mbrico%20(%2416.000).%20%C2%BFEst%C3%A1%20disponible%3F','_blank')"><i class="ti ti-brand-whatsapp"></i> Consultar</button>
         </div>
       </div>
 
@@ -317,17 +274,13 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
           </div>
           <button class="carousel-btn prev" onclick="moveCarousel('car-ultrapod', -1)">‹</button>
           <button class="carousel-btn next" onclick="moveCarousel('car-ultrapod', 1)">›</button>
-          <div class="carousel-dots">
-            <span class="active"></span><span></span><span></span><span></span>
-          </div>
+          <div class="carousel-dots"><span class="active"></span><span></span><span></span><span></span></div>
         </div>
         <div class="prod-info">
           <div class="badge badge-hot">POPULAR</div>
           <div class="prod-name">ULTRA POD Pro Inalámbrico</div>
           <div class="prod-price">$13.000</div>
-          <button class="prod-btn" onclick="window.open('https://wa.me/5493624706831?text=Hola!%20Me%20interesa%20el%20ULTRA%20POD%20Pro%20Inal%C3%A1mbrico%20(%2413.000).%20%C2%BFEst%C3%A1%20disponible%3F','_blank')">
-            <i class="ti ti-brand-whatsapp"></i> Consultar
-          </button>
+          <button class="prod-btn" onclick="window.open('https://wa.me/5493624706831?text=Hola!%20Me%20interesa%20el%20ULTRA%20POD%20Pro%20Inal%C3%A1mbrico%20(%2413.000).%20%C2%BFEst%C3%A1%20disponible%3F','_blank')"><i class="ti ti-brand-whatsapp"></i> Consultar</button>
         </div>
       </div>
 
@@ -343,17 +296,13 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
           </div>
           <button class="carousel-btn prev" onclick="moveCarousel('car-m90', -1)">‹</button>
           <button class="carousel-btn next" onclick="moveCarousel('car-m90', 1)">›</button>
-          <div class="carousel-dots">
-            <span class="active"></span><span></span><span></span><span></span><span></span><span></span>
-          </div>
+          <div class="carousel-dots"><span class="active"></span><span></span><span></span><span></span><span></span><span></span></div>
         </div>
         <div class="prod-info">
           <div class="badge badge-new">NUEVO</div>
           <div class="prod-name">M90 Pro Inalámbrico</div>
           <div class="prod-price">$15.000</div>
-          <button class="prod-btn" onclick="window.open('https://wa.me/5493624706831?text=Hola!%20Me%20interesa%20el%20Auricular%20M90%20Pro%20Inal%C3%A1mbrico%20(%2415.000).%20%C2%BFEst%C3%A1%20disponible%3F','_blank')">
-            <i class="ti ti-brand-whatsapp"></i> Consultar
-          </button>
+          <button class="prod-btn" onclick="window.open('https://wa.me/5493624706831?text=Hola!%20Me%20interesa%20el%20Auricular%20M90%20Pro%20Inal%C3%A1mbrico%20(%2415.000).%20%C2%BFEst%C3%A1%20disponible%3F','_blank')"><i class="ti ti-brand-whatsapp"></i> Consultar</button>
         </div>
       </div>
 
@@ -361,7 +310,6 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
   </div>
 </section>
 
-<!-- CÓMO COMPRAR -->
 <section class="section" id="como-comprar" style="background: var(--bg2); border-top: 1px solid var(--border);">
   <div class="section-header">
     <div class="section-title">¿Cómo comprar?</div>
@@ -410,7 +358,6 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
 
 <script>
 const carouselState = {};
-
 function moveCarousel(id, dir) {
   const car = document.getElementById(id);
   const imgs = car.querySelector('.carousel-imgs');
@@ -421,20 +368,15 @@ function moveCarousel(id, dir) {
   imgs.style.transform = `translateX(-${carouselState[id] * 100}%)`;
   dots.forEach((d, i) => d.classList.toggle('active', i === carouselState[id]));
 }
-
 function filtrar(categoria, btn) {
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   document.querySelectorAll('.cat-section').forEach(sec => {
-    if (categoria === 'todos') {
-      sec.classList.remove('hidden');
-    } else {
-      sec.classList.toggle('hidden', sec.id !== 'cat-' + categoria);
-    }
+    if (categoria === 'todos') sec.classList.remove('hidden');
+    else sec.classList.toggle('hidden', sec.id !== 'cat-' + categoria);
   });
   document.getElementById('productos').scrollIntoView({behavior: 'smooth'});
 }
 </script>
-
 </body>
 </html>
