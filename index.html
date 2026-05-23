@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Next Level Store — Tecnología al siguiente nivel</title>
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg2: #111118;
+    --card: #16161f;
+    --border: #2a2a3a;
+    --accent: #7c3aed;
+    --accent2: #a855f7;
+    --accent3: #06b6d4;
+    --text: #f1f1f3;
+    --muted: #9090a8;
+    --green: #22c55e;
+    --radius: 14px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;overflow-x:hidden}
+
+  /* NAV */
+  nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(10,10,15,0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 5%}
+  .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-size:1.2rem;font-weight:800;background:linear-gradient(135deg,var(--accent2),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  .nav-links{display:flex;gap:2rem;list-style:none}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:.9rem;transition:color .2s}
+  .nav-links a:hover{color:var(--text)}
+  .nav-cta{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;padding:.5rem 1.2rem;border-radius:8px;font-size:.85rem;font-weight:600;cursor:pointer;text-decoration:none}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+  .hamburger span{display:block;width:24px;height:2px;background:var(--text);border-radius:2px;transition:.3s}
+  .mobile-menu{display:none;flex-direction:column;background:var(--bg2);border-bottom:1px solid var(--border);padding:1rem 5%}
+  .mobile-menu a{color:var(--muted);text-decoration:none;padding:.7rem 0;border-bottom:1px solid var(--border);font-size:.95rem}
+  .mobile-menu a:last-child{border-bottom:none}
+  .mobile-menu.open{display:flex}
+
+  /* HERO */
+  .hero{min-height:100vh;display:flex;align-items:center;padding:80px 5% 60px;position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(124,58,237,.25),transparent 70%);pointer-events:none}
+  .hero::after{content:'';position:absolute;bottom:-100px;left:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(6,182,212,.15),transparent 70%);pointer-events:none}
+  .hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;width:100%}
+  .hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(124,58,237,.15);border:1px solid rgba(124,58,237,.4);padding:.35rem .9rem;border-radius:20px;font-size:.8rem;color:var(--accent2);margin-bottom:1.5rem}
+  .hero h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:900;line-height:1.1;margin-bottom:1.2rem}
+  .hero h1 span{background:linear-gradient(135deg,var(--accent2),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  .hero p{color:var(--muted);font-size:1.05rem;line-height:1.7;margin-bottom:2rem}
+  .hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+  .btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;padding:.85rem 1.8rem;border-radius:10px;font-size:1rem;font-weight:700;cursor:pointer;text-decoration:none;transition:transform .2s,box-shadow .2s}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(124,58,237,.4)}
+  .btn-secondary{background:transparent;color:var(--text);border:1px solid var(--border);padding:.85rem 1.8rem;border-radius:10px;font-size:1rem;font-weight:600;cursor:pointer;text-decoration:none;transition:.2s}
+  .btn-secondary:hover{border-color:var(--accent2);color:var(--accent2)}
+  .hero-stats{display:flex;gap:2rem;margin-top:2.5rem}
+  .stat{text-align:center}
+  .stat strong{display:block;font-size:1.5rem;font-weight:800;background:linear-gradient(135deg,var(--accent2),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  .stat span{font-size:.8rem;color:var(--muted)}
+  .hero-visual{display:flex;justify-content:center;align-items:center}
+  .hero-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  .hero-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;text-align:center;transition:.3s}
+  .hero-card:hover{border-color:var(--accent2);transform:translateY(-4px)}
+  .hero-card .icon{font-size:2rem;margin-bottom:.5rem}
+  .hero-card p{font-size:.8rem;color:var(--muted)}
+  .hero-card strong{font-size:.9rem;display:block;margin-bottom:.3rem}
+
+  /* TRUST BAR */
+  .trust{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:1.2rem 5%}
+  .trust-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:center;flex-wrap:wrap;gap:2rem}
+  .trust-item{display:flex;align-items:center;gap:.6rem;font-size:.85rem;color:var(--muted)}
+  .trust-item span:first-child{font-size:1.1rem}
+
+  /* SECTION COMMON */
+  section{padding:80px 5%}
+  .section-inner{max-width:1200px;margin:0 auto}
+  .section-label{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:var(--accent2);margin-bottom:.5rem}
+  .section-title{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;margin-bottom:.8rem}
+  .section-sub{color:var(--muted);max-width:500px}
+
+  /* PRODUCTOS */
+  #productos{background:var(--bg)}
+  .filter-bar{display:flex;gap:.6rem;flex-wrap:wrap;margin:2rem 0}
+  .filter-btn{background:var(--card);border:1px solid var(--border);color:var(--muted);padding:.5rem 1.2rem;border-radius:8px;font-size:.85rem;cursor:pointer;transition:.2s}
+  .filter-btn:hover,.filter-btn.active{background:linear-gradient(135deg,var(--accent),var(--accent2));border-color:transparent;color:#fff}
+  .products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5rem}
+  .product-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:.3s;cursor:pointer}
+  .product-card:hover{border-color:var(--accent2);transform:translateY(-6px);box-shadow:0 16px 40px rgba(124,58,237,.2)}
+  .card-img{position:relative;aspect-ratio:1;overflow:hidden;background:#0d0d18}
+  .card-img img{width:100%;height:100%;object-fit:contain;padding:1rem;transition:transform .4s}
+  .product-card:hover .card-img img{transform:scale(1.07)}
+  .card-badge{position:absolute;top:.7rem;left:.7rem;padding:.25rem .65rem;border-radius:6px;font-size:.7rem;font-weight:700;text-transform:uppercase}
+  .badge-nuevo{background:rgba(6,182,212,.2);color:var(--accent3);border:1px solid rgba(6,182,212,.4)}
+  .badge-oferta{background:rgba(239,68,68,.2);color:#f87171;border:1px solid rgba(239,68,68,.4)}
+  .badge-popular{background:rgba(34,197,94,.2);color:#4ade80;border:1px solid rgba(34,197,94,.4)}
+  .card-img-nav{position:absolute;bottom:.5rem;left:0;right:0;display:flex;justify-content:center;gap:.3rem}
+  .img-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer;transition:.2s}
+  .img-dot.active{background:#fff}
+  .card-body{padding:1.2rem}
+  .card-cat{font-size:.72rem;color:var(--accent2);font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.4rem}
+  .card-name{font-size:1rem;font-weight:700;margin-bottom:.3rem}
+  .card-price{font-size:1.3rem;font-weight:800;color:var(--accent2);margin-bottom:1rem}
+  .card-footer{display:flex;gap:.6rem}
+  .btn-consultar{flex:1;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;padding:.65rem;border-radius:8px;font-size:.88rem;font-weight:700;cursor:pointer;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:.4rem;transition:.2s}
+  .btn-consultar:hover{opacity:.9}
+
+  /* COMO COMPRAR */
+  #como-comprar{background:var(--bg2)}
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1.5rem;margin-top:2.5rem}
+  .step{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;text-align:center;transition:.3s}
+  .step:hover{border-color:var(--accent2)}
+  .step-num{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.1rem;margin:0 auto 1rem}
+  .step h3{font-size:.95rem;font-weight:700;margin-bottom:.4rem}
+  .step p{font-size:.82rem;color:var(--muted)}
+
+  /* ABOUT */
+  #nosotros{background:var(--bg)}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-top:2rem}
+  .about-text p{color:var(--muted);line-height:1.8;margin-bottom:1rem}
+  .about-features{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem}
+  .about-feat{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem;display:flex;align-items:center;gap:.8rem;font-size:.88rem}
+  .about-feat span:first-child{font-size:1.3rem}
+  .about-visual{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;text-align:center}
+  .about-visual .big-icon{font-size:4rem;margin-bottom:1rem}
+  .about-visual h3{font-size:1.1rem;font-weight:700;margin-bottom:.5rem}
+  .about-visual p{color:var(--muted);font-size:.88rem}
+
+  /* FAQ */
+  #faq{background:var(--bg2)}
+  .faq-list{margin-top:2rem;display:flex;flex-direction:column;gap:.8rem}
+  .faq-item{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+  .faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;padding:1.1rem 1.3rem;background:none;border:none;color:var(--text);font-size:.95rem;font-weight:600;cursor:pointer;text-align:left;gap:1rem}
+  .faq-q .arrow{font-size:.8rem;transition:transform .3s;color:var(--muted);flex-shrink:0}
+  .faq-item.open .faq-q .arrow{transform:rotate(180deg)}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+  .faq-a p{padding:.2rem 1.3rem 1.1rem;color:var(--muted);font-size:.9rem;line-height:1.7}
+  .faq-item.open .faq-a{max-height:200px}
+
+  /* CONTACTO */
+  #contacto{background:var(--bg)}
+  .contact-box{background:linear-gradient(135deg,rgba(124,58,237,.15),rgba(6,182,212,.1));border:1px solid rgba(124,58,237,.3);border-radius:20px;padding:3rem;text-align:center;margin-top:2rem}
+  .contact-box h2{font-size:2rem;font-weight:800;margin-bottom:.8rem}
+  .contact-box p{color:var(--muted);margin-bottom:2rem;font-size:1rem}
+  .contact-info{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin-bottom:2rem}
+  .contact-info-item{display:flex;align-items:center;gap:.5rem;font-size:.9rem;color:var(--muted)}
+
+  /* FOOTER */
+  footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 5%;text-align:center}
+  footer p{color:var(--muted);font-size:.85rem}
+  footer strong{color:var(--text)}
+
+  /* WHATSAPP FLOAT */
+  .wa-float{position:fixed;bottom:1.5rem;right:1.5rem;z-index:200;background:#25d366;color:#fff;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,.4);animation:pulse 2.5s infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.4)}50%{box-shadow:0 4px 32px rgba(37,211,102,.7)}}
+
+  /* RESPONSIVE */
+  @media(max-width:768px){
+    .nav-links,.nav-cta{display:none}
+    .hamburger{display:flex}
+    .hero-inner{grid-template-columns:1fr;text-align:center}
+    .hero-visual{display:none}
+    .hero-btns{justify-content:center}
+    .hero-stats{justify-content:center}
+    .about-grid{grid-template-columns:1fr}
+    .about-visual{display:none}
+    .contact-info{flex-direction:column;align-items:center}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="logo">⚡ Next Level Store</div>
+    <ul class="nav-links">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#productos">Productos</a></li>
+      <li><a href="#como-comprar">Cómo comprar</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a class="nav-cta" href="https://wa.me/5493624706831?text=Hola!%20Quiero%20consultar%20sobre%20sus%20productos" target="_blank">WhatsApp</a>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#inicio" onclick="toggleMenu()">Inicio</a>
+    <a href="#productos" onclick="toggleMenu()">Productos</a>
+    <a href="#como-comprar" onclick="toggleMenu()">Cómo comprar</a>
+    <a href="#faq" onclick="toggleMenu()">FAQ</a>
+    <a href="#contacto" onclick="toggleMenu()">Contacto</a>
+    <a href="https://wa.me/5493624706831" target="_blank">📱 WhatsApp</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">⚡ Envíos a todo Argentina</div>
+      <h1>Tecnología al <span>siguiente nivel</span></h1>
+      <p>Teléfonos, relojes y auriculares con garantía y atención personalizada. Directo desde Resistencia, Chaco.</p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="#productos">Ver productos</a>
+        <a class="btn-secondary" href="https://wa.me/5493624706831?text=Hola!%20Quiero%20consultar%20sobre%20sus%20productos" target="_blank">💬 Consultar</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><strong>7+</strong><span>Productos</span></div>
+        <div class="stat"><strong>30d</strong><span>Garantía</span></div>
+        <div class="stat"><strong>100%</strong><span>Seguro</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-cards">
+        <div class="hero-card"><div class="icon">📱</div><strong>Teléfonos</strong><p>Alta gama</p></div>
+        <div class="hero-card"><div class="icon">⌚</div><strong>Relojes</strong><p>Smartwatch</p></div>
+        <div class="hero-card"><div class="icon">🎧</div><strong>Auriculares</strong><p>Inalámbricos</p></div>
+        <div class="hero-card"><div class="icon">🚚</div><strong>Envíos</strong><p>OCA / Andreani</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<div class="trust">
+  <div class="trust-inner">
+    <div class="trust-item"><span>🔒</span><span>Compra segura</span></div>
+    <div class="trust-item"><span>🚚</span><span>Envíos a todo el país</span></div>
+    <div class="trust-item"><span>💳</span><span>Mercado Pago</span></div>
+    <div class="trust-item"><span>🛡️</span><span>Garantía en todos los productos</span></div>
+    <div class="trust-item"><span>💬</span><span>Atención por WhatsApp</span></div>
+  </div>
+</div>
+
+<!-- PRODUCTOS -->
+<section id="productos">
+  <div class="section-inner">
+    <div class="section-label">Catálogo</div>
+    <div class="section-title">Nuestros productos</div>
+    <div class="section-sub">Todo con garantía y atención personalizada</div>
+    <div class="filter-bar" id="filterBar"></div>
+    <div class="products-grid" id="productsGrid"></div>
+  </div>
+</section>
+
+<!-- COMO COMPRAR -->
+<section id="como-comprar">
+  <div class="section-inner">
+    <div class="section-label">Proceso</div>
+    <div class="section-title">¿Cómo comprar?</div>
+    <div class="section-sub">Simple, rápido y seguro</div>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><h3>Elegí tu producto</h3><p>Explorá el catálogo y seleccioná lo que necesitás</p></div>
+      <div class="step"><div class="step-num">2</div><h3>Consultá por WhatsApp</h3><p>Te respondemos al instante</p></div>
+      <div class="step"><div class="step-num">3</div><h3>Elegí el envío</h3><p>OCA, Andreani o retiro gratis en Resistencia</p></div>
+      <div class="step"><div class="step-num">4</div><h3>Pagá seguro</h3><p>Tarjeta, débito o transferencia vía Mercado Pago</p></div>
+      <div class="step"><div class="step-num">5</div><h3>¡Listo!</h3><p>Te avisamos cuando tu pedido esté en camino</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- NOSOTROS -->
+<section id="nosotros">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-label">Quiénes somos</div>
+        <div class="section-title">Un emprendimiento de Resistencia</div>
+        <p>Somos un emprendimiento de Resistencia, Chaco, especializado en tecnología y accesorios. Nacimos con un objetivo claro: acercar productos de calidad a precios accesibles, con la atención personalizada que las grandes tiendas no te dan.</p>
+        <p>Trabajamos con teléfonos, relojes inteligentes y auriculares para que tengas todo lo que necesitás en un solo lugar.</p>
+        <div class="about-features">
+          <div class="about-feat"><span>✅</span><span>Garantía real</span></div>
+          <div class="about-feat"><span>💬</span><span>Soporte 24/7</span></div>
+          <div class="about-feat"><span>🚚</span><span>Envíos rápidos</span></div>
+          <div class="about-feat"><span>💳</span><span>Pago seguro</span></div>
+        </div>
+      </div>
+      <div class="about-visual">
+        <div class="big-icon">⚡</div>
+        <h3>Next Level Store</h3>
+        <p>📍 Resistencia, Chaco, Argentina</p>
+        <p style="margin-top:.5rem">📱 +54 9 362 470-6831</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner">
+    <div class="section-label">Preguntas frecuentes</div>
+    <div class="section-title">Todo lo que necesitás saber</div>
+    <div class="faq-list" id="faqList"></div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="section-inner">
+    <div class="contact-box">
+      <h2>¿Listo para comprar? 🚀</h2>
+      <p>Escribinos por WhatsApp y te asesoramos al instante</p>
+      <div class="contact-info">
+        <div class="contact-info-item"><span>📍</span><span>Resistencia, Chaco</span></div>
+        <div class="contact-info-item"><span>📱</span><span>+54 9 362 470-6831</span></div>
+      </div>
+      <a class="btn-primary" href="https://wa.me/5493624706831?text=Hola!%20Quiero%20consultar%20sobre%20sus%20productos" target="_blank" style="font-size:1.1rem;padding:1rem 2.5rem">💬 Escribirnos por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>⚡ Next Level Store</strong> — Resistencia, Chaco, Argentina</p>
+  <p style="margin-top:.5rem">© 2026 Next Level Store — Todos los derechos reservados</p>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a class="wa-float" href="https://wa.me/5493624706831?text=Hola!%20Quiero%20consultar%20sobre%20sus%20productos" target="_blank" title="Contactar por WhatsApp">💬</a>
+
+<script>
+// ============================================================
+// "BACKEND" — EDITÁ SOLO ESTE ARRAY PARA AGREGAR PRODUCTOS
+// ============================================================
+const productos = [
+  {
+    id: 1,
+    nombre: "Samsung A16",
+    categoria: "Telefonos",
+    precio: 310000,
+    badge: "nuevo",
+    imagenes: [
+      "https://nextlevelstore.vercel.app/Samsung-A16-1.jpg",
+      "https://nextlevelstore.vercel.app/Samsung-A16-2.jpg",
+      "https://nextlevelstore.vercel.app/Samsung-A16-3.jpg"
+    ]
+  },
+  {
+    id: 2,
+    nombre: "SmartWatch D18 Macaron",
+    categoria: "Relojes",
+    precio: 11000,
+    badge: "oferta",
+    imagenes: [
+      "https://nextlevelstore.vercel.app/smartwatch-d18-1.jpg",
+      "https://nextlevelstore.vercel.app/smartwatch-d18-4.jpg",
+      "https://nextlevelstore.vercel.app/smartwatch-d18-5.jpg"
+    ]
+  },
+  {
+    id: 3,
+    nombre: "SmartWatch D20 Macaron",
+    categoria: "Relojes",
+    precio: 11000,
+    badge: "oferta",
+    imagenes: [
+      "https://nextlevelstore.vercel.app/smartwatch-d20-1.jpg",
+      "https://nextlevelstore.vercel.app/smartwatch-d20-2.jpg",
+      "https://nextlevelstore.vercel.app/smartwatch-d20-3.jpg"
+    ]
+  },
+  {
+    id: 4,
+    nombre: "SmartWatch SU 30",
+    categoria: "Relojes",
+    precio: 30000,
+    badge: "popular",
+    imagenes: [
+      "https://nextlevelstore.vercel.app/smartwatch-su30-1.jpg"
+    ]
+  },
+  {
+    id: 5,
+    nombre: "M25 Inalámbrico",
+    categoria: "Auriculares",
+    precio: 16000,
+    badge: "nuevo",
+    imagenes: [
+      "https://nextlevelstore.vercel.app/m25-1.jpg",
+      "https://nextlevelstore.vercel.app/m25-2.jpg",
+      "https://nextlevelstore.vercel.app/m25-3.jpg"
+    ]
+  },
+  {
+    id: 6,
+    nombre: "ULTRA POD Pro Inalámbrico",
+    categoria: "Auriculares",
+    precio: 13000,
+    badge: "popular",
+    imagenes: [
+      "https://nextlevelstore.vercel.app/ultrapod-pro-1.jpg",
+      "https://nextlevelstore.vercel.app/ultrapod-pro-2.jpg",
+      "https://nextlevelstore.vercel.app/ultrapod-pro-3.jpg"
+    ]
+  },
+  {
+    id: 7,
+    nombre: "M90 Pro Inalámbrico",
+    categoria: "Auriculares",
+    precio: 15000,
+    badge: "nuevo",
+    imagenes: [
+      "https://nextlevelstore.vercel.app/m90-pro-1.jpg",
+      "https://nextlevelstore.vercel.app/m90-pro-2.jpg",
+      "https://nextlevelstore.vercel.app/m90-pro-3.jpg"
+    ]
+  }
+];
+
+const faqs = [
+  { q: "¿Hacen envíos a todo el país?", a: "Sí, enviamos a todo Argentina por OCA y Andreani. Si estás en Resistencia o Gran Chaco también podés retirar sin costo." },
+  { q: "¿Qué medios de pago aceptan?", a: "Aceptamos tarjetas de crédito, débito y transferencia bancaria, todo procesado de forma segura por Mercado Pago." },
+  { q: "¿Los productos tienen garantía?", a: "Sí, todos nuestros productos tienen garantía. Ante cualquier problema nos contactás por WhatsApp y lo resolvemos." },
+  { q: "¿Cuánto tarda en llegar mi pedido?", a: "Preparamos en 1-2 días hábiles. Para Resistencia más rápido, para el resto del país entre 3 y 7 días hábiles." },
+  { q: "¿Puedo hacer cambios o devoluciones?", a: "Sí, dentro de los 30 días de recibido el producto en su estado original. Coordinamos por WhatsApp." },
+  { q: "¿Puedo retirar personalmente?", a: "Sí, si estás en Resistencia, Chaco, coordinamos el retiro sin costo escribiéndonos antes." }
+];
+
+// ============================================================
+// RENDER ENGINE
+// ============================================================
+let activeFilter = "Todos";
+const imgIndexes = {};
+
+function formatPrice(p) {
+  return "$" + p.toLocaleString("es-AR");
+}
+
+function renderFilters() {
+  const cats = ["Todos", ...new Set(productos.map(p => p.categoria))];
+  const bar = document.getElementById("filterBar");
+  bar.innerHTML = cats.map(c =>
+    `<button class="filter-btn${c===activeFilter?' active':''}" onclick="setFilter('${c}')">${c}</button>`
+  ).join("");
+}
+
+function setFilter(cat) {
+  activeFilter = cat;
+  renderFilters();
+  renderProducts();
+}
+
+function renderProducts() {
+  const filtered = activeFilter === "Todos" ? productos : productos.filter(p => p.categoria === activeFilter);
+  const grid = document.getElementById("productsGrid");
+  grid.innerHTML = filtered.map(p => {
+    const idx = imgIndexes[p.id] || 0;
+    const dots = p.imagenes.length > 1
+      ? `<div class="card-img-nav">${p.imagenes.map((_,i)=>`<div class="img-dot${i===idx?' active':''}" onclick="changeImg(${p.id},${i},event)"></div>`).join("")}</div>`
+      : "";
+    const prevBtn = p.imagenes.length > 1
+      ? `<button onclick="prevImg(${p.id},event)" style="position:absolute;left:.5rem;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.5);border:none;color:#fff;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:.9rem">‹</button>` : "";
+    const nextBtn = p.imagenes.length > 1
+      ? `<button onclick="nextImg(${p.id},event)" style="position:absolute;right:.5rem;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.5);border:none;color:#fff;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:.9rem">›</button>` : "";
+    const wa = `https://wa.me/5493624706831?text=Hola!%20Quiero%20consultar%20por%20${encodeURIComponent(p.nombre)}`;
+    return `
+      <div class="product-card">
+        <div class="card-img">
+          <img id="img-${p.id}" src="${p.imagenes[idx]}" alt="${p.nombre}"/>
+          <div class="card-badge badge-${p.badge}">${p.badge}</div>
+          ${prevBtn}${nextBtn}${dots}
+        </div>
+        <div class="card-body">
+          <div class="card-cat">${p.categoria}</div>
+          <div class="card-name">${p.nombre}</div>
+          <div class="card-price">${formatPrice(p.precio)}</div>
+          <div class="card-footer">
+            <a class="btn-consultar" href="${wa}" target="_blank">💬 Consultar</a>
+          </div>
+        </div>
+      </div>`;
+  }).join("");
+}
+
+function changeImg(id, idx, e) {
+  e.stopPropagation();
+  imgIndexes[id] = idx;
+  renderProducts();
+}
+function nextImg(id, e) {
+  e.stopPropagation();
+  const p = productos.find(x=>x.id===id);
+  imgIndexes[id] = ((imgIndexes[id]||0)+1) % p.imagenes.length;
+  renderProducts();
+}
+function prevImg(id, e) {
+  e.stopPropagation();
+  const p = productos.find(x=>x.id===id);
+  imgIndexes[id] = ((imgIndexes[id]||0)-1+p.imagenes.length) % p.imagenes.length;
+  renderProducts();
+}
+
+function renderFAQ() {
+  document.getElementById("faqList").innerHTML = faqs.map((f,i)=>`
+    <div class="faq-item" id="faq${i}">
+      <button class="faq-q" onclick="toggleFaq(${i})">
+        ${f.q} <span class="arrow">▼</span>
+      </button>
+      <div class="faq-a"><p>${f.a}</p></div>
+    </div>`).join("");
+}
+
+function toggleFaq(i) {
+  const el = document.getElementById("faq"+i);
+  el.classList.toggle("open");
+}
+
+function toggleMenu() {
+  document.getElementById("mobileMenu").classList.toggle("open");
+}
+
+// INIT
+renderFilters();
+renderProducts();
+renderFAQ();
+</script>
+</body>
+</html>
